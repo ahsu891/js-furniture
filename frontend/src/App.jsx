@@ -6,23 +6,35 @@ import {
 } from "react-router-dom";
 import Navbar from './ui/Navbar';
 import HeroSection from './ui/HeroSection';
+import Layout from './ui/Layout';
 // import Navbar from './ui/Navbar';
+
+
+
+
+
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <div className=''><Navbar/>
-    
-    
-    <HeroSection/>
-    <div className=' h-[400px]'>h</div>
-    </div>,
+    element: <Layout />, // Layout with Outlet
+    children: [
+      {
+        path: "/", 
+        index:true,
+        element: (
+          <div>
+            <HeroSection />
+          </div>
+        ),
+      },
+      {
+        path: "about",
+        element: <div className='text-red-700 bg-cyan-200 h-5'> ahmed world!</div>,
+      },
+    ],
   },
-  {
-    path: "about",
-    element: <div className='text-red-300'>ahmed world!</div>,
-  },
-]);
+])
 export default function App() {
   // comm.qrequests.shift().start(id);
   return (
